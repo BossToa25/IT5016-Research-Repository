@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import random, os, sys
-#Represents card deck of the individual cards and card suits 
+# Represents card deck of the individual cards and card suits.
 cardName = { 1: 'Ace', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six', 7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten', 11: 'Jack', 12: 'Queen', 13: 'King' }
 cardSuit = { 'c': 'Clubs', 'h': 'Hearts', 's': 'Spades', 'd': 'Diamonds' }
 
@@ -40,7 +40,7 @@ def handCount(hand):
 	return(handCount)
 
 def gameEnd(score):
-	print("Blackjack! *Final Score* Computer: "+str(score['computer'])+" You: "+str(score['human']))
+	print("Blackjack! *Final Score* Computer: "+str(score['computer'])+" You: "+str(score['human'])) 
 	sys.exit(0)
 
 deck	= []
@@ -52,10 +52,10 @@ for suit in suits:
 	for rank in range(1,14):
 		deck.append(Card(rank,suit))
 
-keepPlaying = True
+keepPlaying = True 
 
 while keepPlaying:
-	
+	# Shuffles the deck
 	random.shuffle(deck)
 	random.shuffle(deck)
 	random.shuffle(deck)
@@ -70,12 +70,12 @@ while keepPlaying:
 	playHuman = True
 	bustedHuman = False
  
-  # Represents player & computer score, or if either has a score of 21, then the score will show "Blackjack!"
+  	# The following code represents player & computer score, or if either has a score of 21, then the score will show "Blackjack!"
 	while playHuman:
 		os.system('clear')
 		print("Blackjack! Computer: "+str(score['computer'])+" You: "+str(score['human']))
 
-    
+    		# The follow
 		print()
     
 		print('Computer Shows: '+ str(hand['computer'][-1]))
@@ -89,7 +89,7 @@ while keepPlaying:
 
 		print()
   
-	  # User gameplay choices of whether to draw another card, keep current cards in hand or quit the game.
+	  	# The following code represents user gameplay choices of whether to draw another card, keep current cards in hand or quit the game.
 		inputCycle = True
 		userInput = ''
   
@@ -98,7 +98,7 @@ while keepPlaying:
 			if userInput == 'H' or 'S' or 'Q':
 				inputCycle = False
     
-		# When human player draws card, If score is > 21 = Bust which ends the game, otherwise if score < 21 = then if S is entered = keep cards.
+		# The following code shows when human player draws card, If score is > 21 = Bust which ends the game, otherwise if score < 21 = then if S is entered = keep cards.
 		if userInput == 'H':
 			hand['human'].append(deck.pop(0))
 			if handCount(hand['human']) > 21:
@@ -109,7 +109,7 @@ while keepPlaying:
 		else:
 			gameEnd(score)
 
-  # Block of code represents the computer has a score = < 21, then game can continue, otherwise if score = > 21 = Bust, which ends the game.
+  	# The following code represents the computer has a score = < 21, then game can continue, otherwise if score = > 21 = Bust, which ends the game.
 	playComputer = True
 	bustedComputer = False
 
@@ -124,7 +124,7 @@ while keepPlaying:
 			playComputer = False
 			bustedComputer = True
 
-  # Block of code represents messages that appear if either player or computer wins or loses the game and increases individual score by 1 to winner.
+  	# The following code represents messages that appear if either player or computer wins or loses the game and increases individual score by 1 to winner.
 	if bustedHuman:
 		print('Player Busted')
 		score['computer'] += 1
@@ -138,7 +138,7 @@ while keepPlaying:
 		print('Computer Wins')
 		score['computer'] += 1
 
-  # Shows both player and computer's card hands and their respective point total based on hand.
+  	# The following code shows both player and computer's card hands and their respective point total based on their hand.
 	print('Computer Hand:')
 	showHand(hand['computer'])
 	showCount(hand['computer'])
@@ -154,6 +154,6 @@ while keepPlaying:
 	deck.extend(hand['computer'])
 	deck.extend(hand['human'])
  
-  # Clears the previous card hand for each participant in preparation for the next game. 
+  	# Clears the previous card hand for each participant in preparation for the next game. 
 	del hand['computer'][:]
 	del hand['human'][:]
